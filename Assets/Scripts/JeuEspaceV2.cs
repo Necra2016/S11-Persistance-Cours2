@@ -12,7 +12,7 @@ public class JeuEspaceV2 : MonoBehaviour
     public int etoiles = 0;
     private int etoilesDebutNiveau;
     public TextMeshProUGUI textEtoiles;
-    
+    [SerializeField] AudioSource Sons;
     public GameObject fxExplosion;
 
     // Variable pour garder une référence à la copie global
@@ -47,6 +47,7 @@ public class JeuEspaceV2 : MonoBehaviour
 
     public void ChangerScene(int indexScene)
     {
+        
         SceneManager.LoadScene(indexScene);
         // Après que la nouvelle scène est chargé,
         // on garde la valeur de étoiles au début
@@ -66,7 +67,7 @@ public class JeuEspaceV2 : MonoBehaviour
         // Créer une copie du prefab d'explosion à la position du joueur
         Instantiate(fxExplosion, joueur.transform.position, joueur.transform.rotation);
         // Recommencer la scène après 3 s
-        Invoke("RecommencerScene", 3f);
+        Invoke("RecommencerScene", 1f);
     }
 
     void RecommencerScene()
@@ -76,5 +77,10 @@ public class JeuEspaceV2 : MonoBehaviour
         // Retourner la valeur initiale des étoiles avant ce niveau
         etoiles = etoilesDebutNiveau;
         textEtoiles.text = etoiles.ToString("0");
+    }
+
+    public void Music()
+    {
+        Sons.Play();
     }
 }

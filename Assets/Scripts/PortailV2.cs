@@ -10,6 +10,7 @@ public class PortailV2 : MonoBehaviour
     {
         if (autre.CompareTag("Joueur"))
         {
+            JeuEspaceV2.instance.Music();
             JeuEspaceV2.instance.ChangerScene(indexSceneACharger);
         }
     }
